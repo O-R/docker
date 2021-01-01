@@ -11,6 +11,7 @@ RUN mv -f $(wget -nv https://github.com/mc1arke/sonarqube-community-branch-plugi
 
 
 From sonarqube:8.5-community
+USER root
 WORKDIR /opt/sonarqube
 RUN mkdir -p extensions/plugins
 
