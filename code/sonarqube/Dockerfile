@@ -17,3 +17,8 @@ RUN mkdir -p extensions/plugins
 
 COPY --from=builder /extensions/downloads/* extensions/plugins/
 COPY --from=builder /extensions/lib/* lib/common/
+
+RUN chown -R sonarqube:sonarqube extensions/plugins \
+    && chown -R sonarqube:sonarqube lib/common
+
+USER sonarqube
