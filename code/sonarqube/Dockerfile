@@ -13,12 +13,7 @@ RUN mv -f $(wget -nv https://github.com/mc1arke/sonarqube-community-branch-plugi
 From sonarqube:8.5-community
 USER root
 WORKDIR /opt/sonarqube
-RUN mkdir -p extensions/plugins
+RUN mkdir -p /opt/sonarqube/extensions/plugins
 
 COPY --from=builder /extensions/downloads/* extensions/plugins/
 COPY --from=builder /extensions/lib/* lib/common/
-
-RUN chown -R sonarqube:sonarqube extensions/plugins \
-    && chown -R sonarqube:sonarqube lib/common
-
-USER sonarqube
