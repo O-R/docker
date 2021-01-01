@@ -1,5 +1,8 @@
-FROM hub.c.163.com/library/ubuntu:14.04 as builder
+FROM ubuntu:14.04 as builder
 WORKDIR /
+RUN apt-get update \
+    && apt-get install -y wget \ 
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p extensions/downloads
 RUN mv -f $(wget -nv https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/1.6.0/sonarqube-community-branch-plugin-1.6.0.jar 2>&1 |cut -d\" -f2) extensions/downloads/
