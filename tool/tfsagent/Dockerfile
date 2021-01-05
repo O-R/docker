@@ -45,7 +45,7 @@ RUN curl -sL https://deb.nodesource.com/setup_15.x | bash \
    $(lsb_release -cs) \
    stable" \
 && apt-get update \
-&& apt-get install -y --no-install-recommends 
+&& apt-get install -y --no-install-recommends \
         nodejs \
         tzdata \
         docker-ce docker-ce-cli containerd.io \
