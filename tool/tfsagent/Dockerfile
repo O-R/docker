@@ -10,8 +10,11 @@ RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
+        apt-transport-https \
         ca-certificates \
         curl \
+        gnupg-agent \
+        software-properties-common \
         jq \
         git \
         iputils-ping \
@@ -36,8 +39,16 @@ RUN apt-get update \
         openjdk-8-jdk 
 
 RUN curl -sL https://deb.nodesource.com/setup_15.x | bash \
-&& apt-get install -y --no-install-recommends nodejs \
+&& curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
+&& add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable" \
+&& apt-get update \
+&& apt-get install -y --no-install-recommends 
+        nodejs \
         tzdata \
+        docker-ce docker-ce-cli containerd.io \
 && rm -rf /var/lib/apt/lists/* \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
@@ -47,9 +58,9 @@ RUN echo "root:123456" | chpasswd
 EXPOSE 22
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 WORKDIR /azp
-
+RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz
 COPY ./nginx-1.18.0-compile.tar.gz .
-COPY ./vsts-agent-linux-x64-2.153.1.tar.gz .
+#COPY ./vsts-agent-linux-x64-2.153.1.tar.gz .
 COPY ./start.sh .
 RUN chmod +x start.sh
 RUN useradd -s /sbin/nologin -M nginx
