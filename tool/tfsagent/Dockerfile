@@ -58,8 +58,8 @@ RUN echo "root:123456" | chpasswd
 EXPOSE 22
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 WORKDIR /azp
-RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.179.0/vsts-agent-linux-x64-2.179.0.tar.gz -O vsts-agent-linux-x64-2.153.1.tar.gz
-#RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz
+#RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.179.0/vsts-agent-linux-x64-2.179.0.tar.gz -O vsts-agent-linux-x64-2.153.1.tar.gz
+RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz
 COPY ./nginx-1.18.0-compile.tar.gz .
 #COPY ./vsts-agent-linux-x64-2.153.1.tar.gz .
 COPY ./start.sh .
