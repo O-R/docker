@@ -7,7 +7,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 COPY ./sources.list /etc/apt/
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
-RUN apt-get update \
+RUN add-apt-repository ppa:natecarlson/maven3 \
+&& apt-get update \
 && apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \
@@ -25,6 +26,7 @@ RUN apt-get update \
         maven3 \
 && rm -rf /var/lib/apt/lists/* \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&& ln -s /usr/bin/mvn3 /usr/bin/mvn
 
 #RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 #RUN echo "root:123456" | chpasswd
