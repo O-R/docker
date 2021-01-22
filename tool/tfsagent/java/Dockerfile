@@ -21,7 +21,7 @@ RUN apt-get update \
         libssl1.0 \
         openjdk-8-jdk \
         nodejs \
-        tzdata \
+        tzdata wget curl \
         maven3 \
 && rm -rf /var/lib/apt/lists/* \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime

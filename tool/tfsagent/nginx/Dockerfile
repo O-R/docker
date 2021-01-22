@@ -33,7 +33,7 @@ RUN apt-get update \
         libxslt1-dev \
         openjdk-8-jdk \
         nodejs \
-        tzdata \
+        tzdata wget curl \
 && rm -rf /var/lib/apt/lists/* \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
