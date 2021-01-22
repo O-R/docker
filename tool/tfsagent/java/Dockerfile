@@ -25,7 +25,7 @@ RUN add-apt-repository ppa:natecarlson/maven3 \
         tzdata wget curl \
         maven3 \
 && rm -rf /var/lib/apt/lists/* \
-&& ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&& ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 && ln -s /usr/bin/mvn3 /usr/bin/mvn
 
 #RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
