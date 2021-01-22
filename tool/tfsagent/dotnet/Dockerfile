@@ -30,7 +30,6 @@ RUN apt-get update \
 
 WORKDIR /azp
 RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz
-COPY ./nginx-1.18.0-compile.tar.gz .
 
 COPY ./start.sh .
 RUN chmod +x start.sh
