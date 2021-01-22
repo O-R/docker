@@ -7,8 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 COPY ./sources.list /etc/apt/
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
-RUN add-apt-repository ppa:natecarlson/maven3 \
-&& apt-get update \
+RUN apt-get update \
 && apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \
@@ -23,9 +22,14 @@ RUN add-apt-repository ppa:natecarlson/maven3 \
         openjdk-8-jdk \
         nodejs \
         tzdata wget curl \
+&& rm -rf /var/lib/apt/lists/* \
+&& ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+RUN add-apt-repository ppa:natecarlson/maven3 \
+&& apt-get update \
+&& apt-get install -y --no-install-recommends \
         maven3 \
 && rm -rf /var/lib/apt/lists/* \
-&& ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 && ln -s /usr/bin/mvn3 /usr/bin/mvn
 
 #RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
