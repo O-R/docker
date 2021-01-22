@@ -25,8 +25,8 @@ RUN apt-get update \
 && rm -rf /var/lib/apt/lists/* \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-RUN echo "root:123456" | chpasswd
+#RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+#RUN echo "root:123456" | chpasswd
 
 WORKDIR /azp
 RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz

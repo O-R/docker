@@ -19,21 +19,10 @@ RUN apt-get update \
         libunwind8 \
         netcat \
         libssl1.0 \
-        build-essential \
-        perl \
-        libperl-dev \
-        libgd3 \
-        libgd-dev \
-        libgeoip1 \
-        libgeoip-dev \
-        geoip-bin \
-        libxml2 \
-        libxml2-dev \
-        libxslt1.1 \
-        libxslt1-dev \
         openjdk-8-jdk \
         nodejs \
         tzdata \
+        maven3 \
 && rm -rf /var/lib/apt/lists/* \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
