@@ -22,6 +22,7 @@ RUN apt-get update \
         openjdk-8-jdk \
         nodejs \
         tzdata wget curl \
+        python-software-properties software-properties-common \
 && rm -rf /var/lib/apt/lists/* \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
