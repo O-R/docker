@@ -22,16 +22,16 @@ RUN apt-get update \
         openjdk-8-jdk \
         nodejs \
         tzdata wget curl \
-        software-properties-common \
+        maven \
 && rm -rf /var/lib/apt/lists/* \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-RUN add-apt-repository ppa:natecarlson/maven3 \
-&& apt-get update \
-&& apt-get install -y --no-install-recommends \
-        maven3 \
-&& rm -rf /var/lib/apt/lists/* \
-&& ln -s /usr/bin/mvn3 /usr/bin/mvn
+#RUN add-apt-repository ppa:natecarlson/maven3 \
+#&& apt-get update \
+#&& apt-get install -y --no-install-recommends \
+#        maven3 \
+#&& rm -rf /var/lib/apt/lists/* \
+#&& ln -s /usr/bin/mvn3 /usr/bin/mvn
 
 #RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 #RUN echo "root:123456" | chpasswd
