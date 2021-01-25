@@ -46,4 +46,5 @@ COPY ./nginx-1.18.0-compile.tar.gz .
 
 COPY ./start.sh .
 RUN chmod +x start.sh
+RUN useradd -s /sbin/nologin -M nginx
 CMD ["./start.sh"]
