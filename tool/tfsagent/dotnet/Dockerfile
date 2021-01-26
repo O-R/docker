@@ -28,6 +28,7 @@ RUN apt-get update \
 #RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 #RUN echo "root:123456" | chpasswd
 
+RUN echo "199.232.96.133 raw.githubusercontent.com" >> /etc/hosts
 WORKDIR /azp
 RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz
 
