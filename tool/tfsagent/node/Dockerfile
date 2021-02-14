@@ -108,7 +108,7 @@ RUN apt-get update \
         git \
         jq \
         tzdata \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
     && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 WORKDIR /azp
