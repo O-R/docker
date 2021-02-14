@@ -1,4 +1,4 @@
-From node:15.8.0-alpine3.13
+From node:15.8.0-buster-slim
 
 # To make it easier for build and release pipelines to run apt-get,
 # configure apt to not require confirmation (assume the -y argument by default)
