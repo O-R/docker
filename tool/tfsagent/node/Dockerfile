@@ -22,5 +22,5 @@ WORKDIR /azp
 RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz
 
 COPY ./start.sh .
-RUN chmod +x start.sh && ln -sf start.sh /usr/local/bin
-ENTRYPOINT ["start.sh"]
+RUN chmod +x start.sh
+ENTRYPOINT ./start.sh
