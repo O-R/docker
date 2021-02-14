@@ -1,4 +1,4 @@
-FROM python:3.7.9-slim-stretch
+FROM python:2.7.18-slim-stretch
 
 COPY ./sources.list /etc/apt/
 RUN groupadd --gid 1000 node \
