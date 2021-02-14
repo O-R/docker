@@ -109,7 +109,7 @@ RUN apt-get update \
         jq \
         tzdata \
     && rm -rf /var/lib/apt/lists/* \
-    && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && npm install -g node-gyp
 
 WORKDIR /azp
