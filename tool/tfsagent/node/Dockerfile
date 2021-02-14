@@ -15,9 +15,7 @@ RUN apk add --no-cache \
         userspace-rcu \
         zlib \
         curl wget\
-        jq \
         git \
-        iputils-ping \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 WORKDIR /azp
