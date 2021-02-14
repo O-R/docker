@@ -1,4 +1,4 @@
-From node:15.8.0-buster-slim
+From node:15.8.0-alpine3.13
 
 # To make it easier for build and release pipelines to run apt-get,
 # configure apt to not require confirmation (assume the -y argument by default)
@@ -7,19 +7,23 @@ ENV DEBIAN_FRONTEND=noninteractive
 COPY ./sources.list /etc/apt/
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
-RUN apt-get update \
-&& apt-get install -y --no-install-recommends \
+RUN apk add --no-cache \
         ca-certificates \
-        curl \
+        \
+        # .NET Core dependencies
+        krb5-libs \
+        libgcc \
+        libintl \
+        libssl1.1 \
+        libstdc++ \
+        lttng-ust \
+        tzdata \
+        userspace-rcu \
+        zlib \
+        curl wget\
         jq \
         git \
         iputils-ping \
-        libcurl4 \
-        libunwind8 \
-        netcat \
-        libssl1.0 \
-        tzdata wget \
-&& rm -rf /var/lib/apt/lists/* \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 #RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
