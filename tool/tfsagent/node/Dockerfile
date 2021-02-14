@@ -23,4 +23,4 @@ RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-lin
 
 COPY ./start.sh .
 RUN chmod +x start.sh
-CMD ["./start.sh"]
+ENTRYPOINT ["start.sh"]
