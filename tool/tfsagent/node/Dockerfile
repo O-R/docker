@@ -110,6 +110,7 @@ RUN apk add --no-cache \
         zlib \
         curl wget\
         git \
+        jq \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 WORKDIR /azp
