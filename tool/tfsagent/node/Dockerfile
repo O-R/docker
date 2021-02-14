@@ -108,11 +108,14 @@ RUN apt-get update \
         git \
         jq \
         tzdata \
+        build-essential \
     && rm -rf /var/lib/apt/lists/* \
     && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 WORKDIR /azp
 RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz
+RUN wget -nv https://nodejs.org/download/release/v${NODE_VERSION}/node-v${NODE_VERSION}-headers.tar.gz \
+  && echo "tarball = ${PWD}/node-v${NODE_VERSION}-headers.tar.gz" >> /usr/local/etc/npmrc
 
 COPY ./start.sh .
 RUN chmod +x start.sh
