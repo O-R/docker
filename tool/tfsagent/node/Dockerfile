@@ -104,6 +104,7 @@ RUN apt-get update \
         libssl1.0.2 \
         libstdc++6 \
         zlib1g \
+        openjdk-8-jdk \
         curl wget\
         git \
         jq \
