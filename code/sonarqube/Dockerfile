@@ -7,7 +7,7 @@ RUN apt-get update \
 RUN mkdir -p extensions/downloads && mkdir -p extensions/lib
 RUN mv -f $(wget -nv https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/1.6.0/sonarqube-community-branch-plugin-1.6.0.jar 2>&1 |cut -d\" -f2) extensions/downloads/ \
 && cp extensions/downloads/* extensions/lib/ \
-&& mv -f $(wget -nv https://github.com/xuhuisheng/sonar-l10n-zh/releases/download/sonar-l10n-zh-plugin-8.5/sonar-l10n-zh-plugin-8.5.jar 2>&1 |cut -d\" -f2) extensions/downloads/
+&& mv -f $(wget -nv https://github.com/xuhuisheng/sonar-l10n-zh/releases/download/sonar-l10n-zh-plugin-8.5/sonar-l10n-zh-plugin-8.5.jar 2>&1 |cut -d\" -f2) extensions/downloads/ \
 && mv -f $(wget -nv https://github.com/racodond/sonar-css-plugin/releases/download/4.18/sonar-css-plugin-4.18.jar 2>&1 |cut -d\" -f2) extensions/downloads/
 
 
