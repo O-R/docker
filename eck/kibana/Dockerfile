@@ -1,1 +1,1 @@
-docker.elastic.co/kibana/kibana:7.10.2
+From docker.elastic.co/kibana/kibana:7.10.2
