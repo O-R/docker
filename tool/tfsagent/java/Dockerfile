@@ -39,6 +39,9 @@ RUN apt-get update \
 WORKDIR /azp
 RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz
 
+RUN wget -nv https://downloads.gradle-dn.com/distributions/gradle-6.3-bin.zip && mkdir -p /opt/gradle && unzip -d /opt/gradle gradle-6.3-bin.zip && rm -rf gradle-6.3-bin.zip
+ENV PATH="${PATH}:/opt/gradle/gradle-6.3/bin"
+
 COPY ./start.sh .
 RUN chmod +x start.sh
 CMD ["./start.sh"]
