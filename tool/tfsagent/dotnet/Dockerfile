@@ -32,6 +32,6 @@ RUN echo "199.232.96.133 raw.githubusercontent.com" >> /etc/hosts
 WORKDIR /azp
 RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz
 
-COPY ./start.sh .
-RUN chmod +x start.sh
+COPY ./start.sh ./installcredprovider.sh .
+RUN chmod +x start.sh installcredprovider.sh && bash -c installcredprovider.sh
 CMD ["./start.sh"]
