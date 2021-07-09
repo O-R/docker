@@ -30,10 +30,10 @@ RUN apt-get update \
 
 #RUN echo "199.232.96.133 raw.githubusercontent.com" >> /etc/hosts
 WORKDIR /azp
+RUN wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz
 
 COPY ./start.sh .
 RUN chmod +x start.sh
 
-RUN wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 CMD ["./start.sh"]
