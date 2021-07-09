@@ -36,4 +36,5 @@ RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-lin
 COPY ./start.sh .
 RUN chmod +x start.sh
 
+ENV NUGET_CREDENTIALPROVIDER_SESSIONTOKENCACHE_ENABLED=true VSS_NUGET_EXTERNAL_FEED_ENDPOINTS={"endpointCredentials": [{"endpoint":"https://aytfs.aoyuan.net/SourceCode/_packaging/05452ab4-c707-408c-867d-7fa0248722a9/nuget/v3/index.json", "password":"ZTZ6ZmZpczZpYTd4Nzc3Z2N3dzYycmRyYXJnNTM0bHJhNXdqZHJwM3U1am1nb2dhcnZncQ=="}]}
 CMD ["./start.sh"]
