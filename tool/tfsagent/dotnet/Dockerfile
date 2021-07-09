@@ -33,5 +33,7 @@ WORKDIR /azp
 RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-linux-x64-2.153.1.tar.gz
 
 COPY ./start.sh ./installcredprovider.sh .
-RUN chmod +x start.sh installcredprovider.sh && bash -c installcredprovider.sh
+RUN chmod +x start.sh
+RUN chmod +x installcredprovider.sh
+RUN bash -c installcredprovider.sh
 CMD ["./start.sh"]
