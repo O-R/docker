@@ -35,7 +35,5 @@ RUN wget -nv https://vstsagentpackage.azureedge.net/agent/2.153.1/vsts-agent-lin
 COPY ./start.sh .
 RUN chmod +x start.sh
 
-COPY ./installcredprovider.sh .
-RUN chmod +x installcredprovider.sh
-RUN ./installcredprovider.sh
+RUN wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 CMD ["./start.sh"]
