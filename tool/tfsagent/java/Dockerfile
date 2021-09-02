@@ -9,8 +9,7 @@ RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
-        ca-certificates \
-        curl \
+        apt-transport-https ca-certificates curl gnupg lsb-release\
         jq \
         git \
         iputils-ping \
@@ -25,6 +24,16 @@ RUN apt-get update \
         maven \
 && rm -rf /var/lib/apt/lists/* \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
+&& add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable" \
+&& apt-get update \
+&& apt-get install -y --no-install-recommends \
+        docker-ce docker-ce-cli containerd.io \
+&& rm -rf /var/lib/apt/lists/* 
 
 #RUN add-apt-repository ppa:natecarlson/maven3 \
 #&& apt-get update \
