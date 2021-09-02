@@ -22,6 +22,7 @@ RUN apt-get update \
         nodejs \
         tzdata wget curl vim tar zip unzip \
         maven \
+        systemd \
 && rm -rf /var/lib/apt/lists/* \
 && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
